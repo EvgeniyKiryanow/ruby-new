@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <h1 style="color: rebeccapurple; text-align: center">User course</h1>
+   <p><%= flash[:error] %></p>
+   <p><%= flash[:success] %></p>
+    <%= yield %>
+  </body>
+</html>

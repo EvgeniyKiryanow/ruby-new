@@ -1,0 +1,14 @@
+%h2{style:"color:red;"}Show item
+%br
+%h3= @item.name.upcase
+%ul
+    %li Id:         #{@item.id}
+    %li Name        #{@item.name }
+    %li Price       #{@item.price}
+    %li Description #{urls_to_images(@item.description)}
+%br
+= button_to "edit #{@item.name}", edit_item_path, method: :get
+= button_to "delete #{@item.name}", item_path(@item), method: :delete
+= button_to "index", items_path, method: :get
+%br
+= render :partial =>  'shared/email'

@@ -1,0 +1,35 @@
+<% if @items.empty? %>
+<h3>No items, add item</h3>
+<%=  link_to  'new item' , new_item_path  %> <br/>
+<% else %>
+  <h2>All items</h2>
+<table class="my_table">
+  <tr>
+    <th>item id</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th>Image</th>
+    <th>Delete</th>
+  </tr>
+  <% @items.each do |item| %>
+  <tr data-item_id = "<%= item.id %>">
+    <th><%= item.id  %></th>
+    <th><%= link_to item.name, item_path(item) %></th>
+    <th><%=  item.price  %></th>
+    <th><%=  item.description %></th>
+    <th><%= item.votes_count %> <%=  link_to '+', upvote_item_path(item)  %></th>
+    <th><%= !item.image.nil? ? image_tag(item.image.file, width: '30px', height: '30px'):'no img' %></th>
+    <th class="deleteAction"><span>Delete</span></th>
+  </tr>
+  <%  end  %>
+</table>
+<br/>
+    <%=  button_to  'new item' , new_item_path, method: :get  %> <br/>
+    <%=  button_to 'item expensive', expensive_items_path, method: :get %>  <br/>
+    <%=  button_to 'index', items_path, method: :get  %> <br/>
+    <%=  button_to 'admin panel', admin_users_count_path, method: :get  %> <br/>
+<%  end %>
+
+<%= render :partial =>  'shared/email'%>

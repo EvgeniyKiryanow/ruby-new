@@ -1,0 +1,36 @@
+- if @items.empty?
+  %h3 No items, add item
+  = link_to  'new item' , new_item_path
+  %br/
+- else
+  %h2 All items
+  %table.my_table
+    %tr
+      %th item id
+      %th Name
+      %th Price
+      %th Description
+      %th Rating
+      %th Image
+      %th Delete
+    - @items.each do |item|
+      %tr
+        %th= item.id
+        %th= link_to item.name, item_path(item)
+        %th= item.price
+        %th= item.description
+        %th
+          = item.votes_count
+          = link_to '+', upvote_item_path(item)
+        %th= !item.image.nil? ? image_tag(item.image.file, width: '30px', height: '30px'):'no img'
+        %th= button_to 'delete', item_path(item), method: :delete, class: 'deleteAction'
+  %br/
+  = button_to  'new item' , new_item_path, method: :get
+  %br/
+  = button_to 'item expensive', expensive_items_path, method: :get
+  %br/
+  = button_to 'index', items_path, method: :get
+  %br/
+  = button_to 'admin panel', admin_users_count_path, method: :get
+  %br/
+= render :partial =>  'shared/email'
