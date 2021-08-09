@@ -10,9 +10,8 @@
   </head>
 
   <body>
+  <%= render :partial => 'shared/navbar' %>
   <h1 style="color: rebeccapurple; text-align: center">User course</h1>
-   <p><%= flash[:error] %></p>
-   <p><%= flash[:success] %></p>
     <%= yield %>
   </body>
 </html>

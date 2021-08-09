@@ -1,0 +1,18 @@
+<table class="table">
+<tr>
+  <th class="table-info" scope="col">id</th>
+  <th class="table-info" scope="col">email</th>
+  <th class="table-info" scope="col">created_at</th>
+  <th class="table-info" scope="col">updated_at</th>
+</tr>
+  <% @users.each do |user| %>
+    <tr>
+      <th class="table-info" scope="col"><%=user.id %></th>
+      <th class="table-info" scope="col"><%=user.email %></th>
+      <th class="table-info" scope="col"><%=user.created_at %></th>
+      <th class="table-info" scope="col"><%=user.updated_at %></th>
+    </tr>
+
+  <% end %>
+</table>
+
